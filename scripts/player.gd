@@ -2,12 +2,10 @@ extends CharacterBody3D
 
 
 const SPEED = 10
-const JUMP_VELOCITY = 7
+const JUMP_VELOCITY = 8
 var sensibility = 0.7
 var max_camera_angle = 90
-var min_camera_angle = -45
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+var min_camera_angle = -80
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera_anchor_y := $CameraAnchorY
 @onready var camera_anchor_x = $CameraAnchorY/CameraAnchorX

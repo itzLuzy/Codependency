@@ -1,19 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://circm4jhend7h"]
+[gd_scene load_steps=11 format=3 uid="uid://circm4jhend7h"]
 
 [ext_resource type="Environment" uid="uid://b3au6nu1qtev8" path="res://resources/env.tres" id="1_ks8n1"]
+[ext_resource type="Material" uid="uid://xo64jax87nj2" path="res://resources/base_floor.tres" id="1_oubah"]
 [ext_resource type="PackedScene" uid="uid://cb2piqp4tiwhn" path="res://scenes/player.tscn" id="2_lhfdg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dnajq"]
 size = Vector3(32, 1, 32)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpiwy"]
-albedo_color = Color(0.239216, 0.2, 0.2, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_3ikg6"]
-material = SubResource("StandardMaterial3D_hpiwy")
+material = ExtResource("1_oubah")
 size = Vector3(32, 1, 32)
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_teqkx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bfypl"]
+size = Vector3(1, 4, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h11m1"]
+material = ExtResource("1_oubah")
+size = Vector3(1, 4, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ymvo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_613j1"]
 
 [node name="Level0" type="Node3D"]
 
@@ -36,3 +45,25 @@ transform = Transform3D(1, 0, 0, 0, 0.643135, 0.765753, 0, -0.765753, 0.643135, 
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_lhfdg")]
+
+[node name="Wall1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.966, 2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
+shape = SubResource("BoxShape3D_bfypl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
+mesh = SubResource("BoxMesh_h11m1")
+
+[node name="Box1" type="RigidBody3D" parent="." groups=["Susceptibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10.0892)
+can_sleep = false
+lock_rotation = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box1"]
+shape = SubResource("BoxShape3D_3ymvo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box1"]
+mesh = SubResource("BoxMesh_613j1")
+
+[editable path="Player"]
