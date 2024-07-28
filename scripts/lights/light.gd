@@ -1,19 +1,25 @@
 extends SpotLight3D
 class_name LightEffect
 
-var forward: Vector3 = -global_transform.basis.z
-var range_squared: float = spot_range ** 2
+@onready var area: Area3D = $Area3D
+@onready var collision: CollisionShape3D = $Area3D/CollisionShape3D
 
+func _ready():
+	area.body_entered.connect(on_body_entered)
+	area.body_exited.connect(on_body_exited)
+	
+	
+
+#var forward: Vector3 = -global_transform.basis.z
+#var range_squared: float = spot_range ** 2
 func _physics_process(delta):
-	forward = -global_transform.basis.z
-	for body: RigidBody3D in get_tree().get_nodes_in_group("Susceptibles"):
-		var distance_squared = global_position.distance_squared_to(body.global_position)
-		if distance_squared <= range_squared:
-			var to_body: Vector3 = global_position.direction_to(body.global_position)
-			var angle = rad_to_deg(forward.angle_to(to_body))
-			if angle <= spot_angle:
-				body.gravity_scale = -1
-			else:
-				body.gravity_scale = 1
-		else:
-			body.gravity_scale = 1
+	print(area.get_overlapping_bodies())
+	if Input.is_action_just_pressed("switch"):
+		visible = not visible
+		collision.disabled = not collision.disabled
+
+func on_body_entered(body: Affectable):
+	body.addGravityEffect()
+
+func on_body_exited(body: Affectable):
+	body.removeGravityEffect()
