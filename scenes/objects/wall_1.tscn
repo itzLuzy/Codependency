@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4j66efkrq6gv"]
+
+[ext_resource type="Material" uid="uid://ds5e4377omcaf" path="res://resources/unaffected_d.tres" id="1_h7hvd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bfypl"]
+size = Vector3(1, 1, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7by1"]
+albedo_color = Color(0.239216, 0.2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_60qht"]
+material = SubResource("StandardMaterial3D_l7by1")
+size = Vector3(1, 1, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_04to2"]
+material = ExtResource("1_h7hvd")
+size = Vector3(1, 1, 8)
+
+[node name="Wall1" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.966, 0.5, 0)
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bfypl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("BoxMesh_60qht")
+
+[node name="Detectable" type="MeshInstance3D" parent="."]
+layers = 8
+mesh = SubResource("BoxMesh_04to2")

@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxssd4rren3af"]
+[gd_scene load_steps=6 format=3 uid="uid://bxssd4rren3af"]
 
 [ext_resource type="Script" path="res://scripts/objects/affectable.gd" id="1_rkyaa"]
+[ext_resource type="Material" uid="uid://pq4ev7bpbxf" path="res://resources/affected_d.tres" id="2_00i2o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ymvo"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_613j1"]
+[sub_resource type="BoxMesh" id="BoxMesh_tpneg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvxj1"]
+material = ExtResource("2_00i2o")
 
 [node name="Box1" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -18,4 +22,10 @@ script = ExtResource("1_rkyaa")
 shape = SubResource("BoxShape3D_3ymvo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_613j1")
+layers = 4
+mesh = SubResource("BoxMesh_tpneg")
+
+[node name="Detectable" type="MeshInstance3D" parent="."]
+layers = 8
+ignore_occlusion_culling = true
+mesh = SubResource("BoxMesh_xvxj1")
