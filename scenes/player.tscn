@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cb2piqp4tiwhn"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_c16bj"]
+[ext_resource type="Script" uid="uid://bf06mc4lf5pmt" path="res://scripts/player.gd" id="1_c16bj"]
 [ext_resource type="PackedScene" uid="uid://web8vf3qpo2d" path="res://scenes/lights/gravity_flip.tscn" id="2_boyk2"]
-[ext_resource type="Script" path="res://scripts/lights/collision_detector.gd" id="2_qvsw0"]
+[ext_resource type="Script" uid="uid://dymy2fvpdi5d2" path="res://scripts/lights/collision_detector.gd" id="2_qvsw0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hf2tv"]
 

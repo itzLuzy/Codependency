@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://web8vf3qpo2d"]
 
-[ext_resource type="Script" path="res://scripts/lights/light.gd" id="1_h05nk"]
+[ext_resource type="Script" uid="uid://cgmn7t7fxb0fb" path="res://scripts/lights/light.gd" id="1_h05nk"]
 
 [node name="GravityFlip" type="SpotLight3D"]
 light_color = Color(0.415686, 0.317647, 1, 1)

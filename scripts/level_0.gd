@@ -16,5 +16,3 @@ func _process(_delta):
 		window.size = Vector2i(window_w, window_h)
 		window_size = window.size
 	
-
-
